@@ -2,7 +2,6 @@ extends Node
 
 # @onready var mesh = $MeshInstance3D
 
-@onready var camera = $Camera3D
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 func _input(event: InputEvent) -> void:
@@ -20,7 +19,6 @@ func _input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	camera.look_at(Vector3(0, 0, 0))
 	# load your image.
 	# var image = load("res://media/fighter/cinfa.jpg")
 	# # Get the 3D model
@@ -35,6 +33,7 @@ func _ready():
 	# material_one.albedo_texture = image
 	# # Reassign the material
 	# mesh.set_surface_override_material(0, material_one)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

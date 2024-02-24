@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3tb0md386fny"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_muxen"]
+[ext_resource type="PackedScene" uid="uid://kum18wkuvc53" path="res://fighter.tscn" id="2_ffh5n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8qt0h"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_25ceo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjax1"]
+albedo_color = Color(0.0431373, 0, 0, 1)
+
+[node name="Test" type="Node3D"]
+script = ExtResource("1_muxen")
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5, 0)
+visible = false
+mesh = SubResource("SphereMesh_8qt0h")
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.241515, 0.970397, 0, -0.970397, -0.241515, 156.369, 0, 0)
+light_energy = 2.0
+light_angular_distance = 0.5
+light_bake_mode = 0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -20, 0)
+mesh = SubResource("PlaneMesh_25ceo")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjax1")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(-0.599876, -0.612285, 0.515031, -0.700288, 0.713136, 0.0321481, -0.386971, -0.341385, -0.856569, 50, 100, -20)
+
+[node name="Fighter" parent="." instance=ExtResource("2_ffh5n")]

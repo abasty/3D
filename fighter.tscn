@@ -10,6 +10,48 @@ albedo_texture = ExtResource("3_leprt")
 emission = Color(1, 1, 1, 1)
 emission_on_uv2 = true
 
+[sub_resource type="Animation" id="Animation_yyttv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fjqmg"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_6xub2"]
 resource_name = "move"
 loop_mode = 1
@@ -42,48 +84,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_fjqmg"]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 10, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_yyttv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5ng0"]
 _data = {
 "RESET": SubResource("Animation_yyttv"),
@@ -99,14 +99,6 @@ script = ExtResource("2_mgo7s")
 mesh = ExtResource("1_x4f5v")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_o38dw")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.564364, -0.574541, -0.592787, -0.713397, -0.70076, -2.12609e-08, -0.415401, 0.422892, -0.80536, 73.0624, 44.9291, 16.5494)
-fov = 37.8493
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 115.312, 0)
-light_energy = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
