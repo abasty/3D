@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf5te3pstf3k2"]
+
+[ext_resource type="PackedScene" uid="uid://cjcoa1dmoe462" path="res://media/fighter/fighter2.gltf" id="1_nfmc4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="fighter2" parent="." instance=ExtResource("1_nfmc4")]
+transform = Transform3D(1.19249e-08, 1, -1.19249e-08, 0, 1.19249e-08, 1, 1, -1.19249e-08, 1.42203e-16, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
