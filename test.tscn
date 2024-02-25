@@ -26,8 +26,8 @@ environment = SubResource("Environment_bmg6f")
 
 [node name="Light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.5, -0.150384, 0.852868, 0, 0.984808, 0.173648, -0.866025, 0.0868241, -0.492404, 0, 0, 0)
-light_color = Color(0.858824, 0.352941, 0.27451, 1)
-light_angular_distance = 0.5
+light_color = Color(1, 0.952941, 0.690196, 1)
+light_angular_distance = 3.0
 shadow_enabled = true
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
