@@ -1,33 +1,42 @@
 extends Node3D
 
-const camera_speed = 4
+const camera_speed = 40
 
 @onready var camera : Camera3D = $Camera
-@onready var light : DirectionalLight3D = $Light
-@onready var camera_azimuth := 0
+@onready var camera_azimuth := 0.0
+# @onready var light : DirectionalLight3D = $Light
 
-# Add input handling
-func _input(event: InputEvent) -> void:
-	var camera_last_azimuth := camera_azimuth
-	if event is InputEventKey:
-		if event.keycode == KEY_LEFT && event.pressed:
-			camera_azimuth -= camera_speed
-		elif event.keycode == KEY_RIGHT && event.pressed:
-			camera_azimuth += camera_speed
-		if event.keycode == KEY_UP && event.pressed:
-			camera.position.y += camera_speed
-		elif event.keycode == KEY_DOWN && event.pressed:
-			camera.position.y -= camera_speed
-
-		if camera_azimuth != camera_last_azimuth:
-			camera.position.x = cos(deg_to_rad(camera_azimuth)) * 50
-			camera.position.z = sin(deg_to_rad(camera_azimuth)) * 50
-		camera.look_at(Vector3(0, 0, 0))
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	camera.look_at(Vector3(0, 0, 0))
+# end func _ready
 
-# Called every frame. 'camera_speed' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(delta: float) -> void:
+	var camera_last_azimuth := camera_azimuth
+	var camera_last_prosition_y := camera.position.y
+
+	if Input.is_key_pressed(KEY_LEFT):
+		camera_azimuth -= camera_speed * delta
+	# end if
+
+	if Input.is_key_pressed(KEY_RIGHT):
+		camera_azimuth += camera_speed * delta
+	# end if
+
+	if Input.is_key_pressed(KEY_UP):
+		camera.position.y += camera_speed * delta
+	# end if
+
+	if Input.is_key_pressed(KEY_DOWN):
+		camera.position.y -= camera_speed * delta
+	# end if
+
+	if camera_azimuth != camera_last_azimuth:
+		camera.position.x = cos(deg_to_rad(camera_azimuth)) * 50
+		camera.position.z = sin(deg_to_rad(camera_azimuth)) * 50
+	# end if
+
+	if camera.position.y != camera_last_prosition_y or camera_azimuth != camera_last_azimuth:
+		camera.look_at(Vector3(0, 0, 0))
+	# end if
+
+# end func _process
