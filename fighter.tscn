@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kum18wkuvc53"]
+[gd_scene load_steps=11 format=3 uid="uid://kum18wkuvc53"]
 
 [ext_resource type="ArrayMesh" uid="uid://cmvmx7oweq8by" path="res://media/fighter/fighter1.obj" id="1_x4f5v"]
 [ext_resource type="Script" path="res://fighter.gd" id="2_mgo7s"]
@@ -93,7 +93,10 @@ _data = {
 "spin": SubResource("Animation_78nnr")
 }
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_um488"]
+size = Vector3(24.76, 5.77014, 48.529)
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("2_mgo7s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -105,3 +108,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_o38dw")
 libraries = {
 "": SubResource("AnimationLibrary_k5ng0")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, -0.0734253, -7.08894)
+shape = SubResource("BoxShape3D_um488")

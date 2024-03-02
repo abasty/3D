@@ -1,8 +1,9 @@
 # Todo List
 
 - [x] Atmospherics : Ciel, Soleil
-- [ ] Terrain avec fog
+- [ ] Terrain avec fog, point de repères
 - [ ] Cockpit 3D, render on texture
+- [ ] Réacteurs
 - [ ]
 
 # Liens

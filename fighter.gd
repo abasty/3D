@@ -1,40 +1,34 @@
-extends Node
+extends CharacterBody3D
 
-# @onready var mesh = $MeshInstance3D
+@export var pitch_speed := 1.5
+@export var roll_speed := 1.9
+@export var yaw_speed := 1.25
+@export var max_speed := 50.0
+@export var acceleration := 0.6
+@export var input_response := 8.0
 
-@onready var anim_player : AnimationPlayer = $AnimationPlayer
+var forward_speed := 0.0
+var pitch_input := 0.0
+var roll_input := 0.0
+var yaw_input := 0.0
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_A && event.pressed:
-			anim_player.play("move")
-		elif event.keycode == KEY_Z && event.pressed:
-			anim_player.play("spin")
-		elif event.keycode == KEY_E && event.pressed:
-			anim_player.play("jump")
-		elif event.keycode == KEY_SPACE && event.pressed:
-			anim_player.pause()
-		elif event.keycode == KEY_ESCAPE && event.pressed:
-			anim_player.stop()
+func get_input(delta: float) -> void:
+	if Input.is_action_pressed("throttle_up"):
+		forward_speed = lerp(forward_speed, max_speed, acceleration * delta)
+	if Input.is_action_pressed("throttle_down"):
+		forward_speed = lerp(forward_speed, 0.0, acceleration * delta)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# load your image.
-	# var image = load("res://media/fighter/cinfa.jpg")
-	# # Get the 3D model
-	# var mesh = get_node("MeshInstance3D")
-	# mesh.create_debug_tangents()
-	# # Get a duplicate material of the material in slot 0
-	# # (New code below!)
-	# var mat = mesh.get_active_material(0)
-	# # var mat = mesh.get_surface_override_material(0)
-	# var material_one = mat.duplicate()
-	# # Change the texture
-	# material_one.albedo_texture = image
-	# # Reassign the material
-	# mesh.set_surface_override_material(0, material_one)
-	pass
+	pitch_input = lerp(pitch_input, Input.get_axis("pitch_down", "pitch_up"), input_response * delta)
+	roll_input = lerp(roll_input, Input.get_axis("roll_right", "roll_left"), input_response * delta)
+	yaw_input = lerp(yaw_input, Input.get_axis("yaw_right", "yaw_left"), input_response * delta)
+	# yaw_input = -roll_input
+	roll_input = -yaw_input
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta: float) -> void:
+	get_input(delta)
+	velocity = transform.basis.x * forward_speed
+	transform.basis = transform.basis.rotated(transform.basis.z, pitch_input * pitch_speed * delta)
+	transform.basis = transform.basis.rotated(transform.basis.x, roll_input * roll_speed * delta)
+	transform.basis = transform.basis.rotated(transform.basis.y, yaw_input * yaw_speed * delta)
+	transform.basis = transform.basis.orthonormalized()
+	move_and_collide(velocity * delta)
