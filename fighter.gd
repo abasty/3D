@@ -22,7 +22,7 @@ func get_input(delta: float) -> void:
 	roll_input = lerp(roll_input, Input.get_axis("roll_right", "roll_left"), input_response * delta)
 	yaw_input = lerp(yaw_input, Input.get_axis("yaw_right", "yaw_left"), input_response * delta)
 	# yaw_input = -roll_input
-	roll_input = -yaw_input
+	# roll_input = -yaw_input
 
 func _physics_process(delta: float) -> void:
 	get_input(delta)

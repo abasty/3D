@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3tb0md386fny"]
+[gd_scene load_steps=8 format=3 uid="uid://c3tb0md386fny"]
 
 [ext_resource type="Texture2D" uid="uid://dc6rihubbm8pd" path="res://media/skybox/sky.png" id="1_jqf4t"]
 [ext_resource type="PackedScene" uid="uid://kum18wkuvc53" path="res://fighter.tscn" id="2_ffh5n"]
 [ext_resource type="Script" path="res://InterpolatedCamera.gd" id="2_qfdqq"]
+[ext_resource type="PackedScene" uid="uid://bgt3uakkg0o2m" path="res://cube.tscn" id="4_nvoky"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n0mgi"]
 panorama = ExtResource("1_jqf4t")
@@ -32,4 +33,6 @@ script = ExtResource("2_qfdqq")
 target = NodePath("../Fighter")
 
 [node name="Fighter" parent="." instance=ExtResource("2_ffh5n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("4_nvoky")]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 300, 0, 0)
