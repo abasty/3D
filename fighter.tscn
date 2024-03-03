@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://kum18wkuvc53"]
+[gd_scene load_steps=12 format=3 uid="uid://kum18wkuvc53"]
 
 [ext_resource type="ArrayMesh" uid="uid://cmvmx7oweq8by" path="res://media/fighter/fighter1.obj" id="1_x4f5v"]
 [ext_resource type="Script" path="res://fighter.gd" id="2_mgo7s"]
 [ext_resource type="Texture2D" uid="uid://fperaa8tpvid" path="res://media/fighter/thor.jpg" id="3_leprt"]
+[ext_resource type="PackedScene" uid="uid://drnqbvwdxby1v" path="res://plasma.tscn" id="4_r5qr0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o38dw"]
 cull_mode = 2
@@ -112,3 +113,9 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, -0.0734253, -7.08894)
 shape = SubResource("BoxShape3D_um488")
+
+[node name="Reactor1" parent="." instance=ExtResource("4_r5qr0")]
+transform = Transform3D(-1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0, 4, -19, -1.176, -8.28)
+
+[node name="Reactor2" parent="." instance=ExtResource("4_r5qr0")]
+transform = Transform3D(-1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0, 4, -19, -1.176, 6.72)

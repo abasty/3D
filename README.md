@@ -3,8 +3,9 @@
 - [x] Atmospherics : Ciel, Soleil
 - [ ] Terrain avec fog, point de repères
 - [ ] Cockpit 3D, render on texture
+- [ ] Lumière qui clignote
 - [ ] Réacteurs
-- [ ]
+- [ ] Shaders
 
 # Liens
 
